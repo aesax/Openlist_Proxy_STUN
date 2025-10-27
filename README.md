@@ -52,3 +52,23 @@
 ---
 
 **🎉 恭喜！** 全部设置完成后，你的下载速度就会像坐上了火箭一样飞速提升！再也不用看那些“傲娇”资源的脸色啦！
+
+
+原文:
+```
+这是什么业务
+
+当你的Openlist 服务器受限于带宽太低 并且一些资源无法通过302重定向下载 例如百度网盘 大于20M 则需要设置UA，本地文件下载速度慢的问题
+
+准备条件：
+一台内网服务器 并且支持 STUN 
+软件 Openlist + Openlist-Proxy + lucky 部署在同一机器上
+Openlist Web 通过 Cloudflared 或者 FRP 或者CDN 绑定好 
+例如 cloudflare SERVER > YourServer:PORT5244 （这个解决方案很多 不多阐述）例 demo.com
+启动 Openlist-Proxy 设置好 token openlist_address(localhost)
+lucky 设置STUN 打洞 Openlist-proxy端口 配置好websocket通信 将及时信息传递到websocket服务器，并设置DDNS绑定你的域名（获取公网IP方式选择接口 而不是网卡！）假设绑定的域名为 down.demo.com
+
+在openlist 配置好Javascript（替换 STUN打洞的端口）该项目已经开发 
+替换js内的参数实现 替换down.demo.com:PORT 达到下载效果
+
+```
